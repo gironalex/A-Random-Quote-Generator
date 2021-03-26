@@ -1,24 +1,18 @@
 /******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
+* Treehouse FSJS Techdegree:
+* project 1 - A Random Quote Generator
+* by Alex Giron
+* March 2021
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
+// --------------------------------------Quotes Array--------------------------------------------------
 
 /*** 
- * `quotes` array 
-***/
-
-// Creating an, object filled, array named quotes.
-
-/*** Quotes Array property - values
-quote [type: string] - actual quote.
-source [type: string] - the person/character who said quote.
-citation [type: string] - reference to the source of the quote.
-year [type: number] - year quote originated.
-tags [type: string] - category of the quote i.e. humor, business, etc... EXTRA CREDIT: STEP 1
+* quote [type: string] - actual quote.
+* source [type: string] - the person/character who said quote.
+* citation [type: string] - reference to the source of the quote.
+* year [type: number] - year quote originated.
+* tags [type: string] - category of the quote i.e. humor, business, etc... EXTRA CREDIT: STEP 1
 ***/
 
 const quotes = [ 
@@ -57,18 +51,14 @@ const quotes = [
   }
 ];
 
-/***
- * `getRandomQuote` function
-***/
+// ------------------------------getRandomQuote Function------------------------------------------------
 
 /*** 
-  [getRandomQuote function creates a random number,
-  and uses that number to return a random quote object 
-  from the quotes array]
+  getRandomQuote function creates a random number, and uses that number to return a random quote object 
+  from the quotes array.
 
-  @param {[array]} arr - [an array filled with object types]
-  @returns {[object]} randomQuote - [returns a random object 
-    quote from given array]
+  @param {[array]} arr - an array filled with object types.
+  @returns {[object]} randomQuote - returns a random object quote from given array.
 ***/
 
 function getRandomQuote( arr ) {
@@ -82,34 +72,29 @@ function getRandomQuote( arr ) {
   return randomQuote;
 }
 
-/***
- * `printQuote` function
-***/
+// ------------------------------printQuote() function---------------------------------------------------
 
 /*** 
-  [printQuote function will receieve the random quote from the getRandomQuote
-  function and will then display said quote properly in the browser.]
+  printQuote function will receieve the random quote from the getRandomQuote function and will 
+  then display said quote properly in the browser.
 
-  @param {[]} - [No parameter in this function]
-  @returns {[string]} message - [Concatenated string that includes information 
-  of the random quote object that will be displayed on the browser.]
+  @param {[]} - No parameter in this function.
+  @returns {[string]} message - Concatenated string.
 ***/
+
 function printQuote(){
 
-  /* quoteInfo is a const variable that stores the quote's Object properties
-   + values from the getRandomQuote function. */
+  /* quoteInfo is a const variable that stores the quote's Object properties + values 
+  from the getRandomQuote function. */
   const quoteInfo = getRandomQuote(quotes);
 
-  /* message is a string that will be used as the basis for printing the random
-   object onto the web browser.*/
+  /* message is a string that will be used as the basis for printing the random quote*/
   let message = `
     <p class = 'quote'> ${ quoteInfo.quote } </p>
     <p class = 'source'> ${ quoteInfo.source } 
     `;
 
-  /* Using two separate if statements to determine if the quote object has
-     citation, year & tags properties, if true they will be added to the message
-     variable. EXTRA CREDIT: STEP 1 CONTINUED...*/
+  /* Using two separate if statements to determine if the quote object has citation, year & tags properties, */
   if ( quoteInfo.citation !== undefined ) {
     message += `<span class = 'citation'> ${ quoteInfo.citation } </span>`
   }
@@ -117,6 +102,7 @@ function printQuote(){
   if ( quoteInfo.year !== undefined ) {
     message += `<span class = 'year'> ${ quoteInfo.year } </span>`
   }
+
   if ( quoteInfo.tags !== undefined ) {
     message += `<span class = 'tags'> , ${ quoteInfo.tags } </span>`
   }
@@ -124,23 +110,19 @@ function printQuote(){
   // Completed concatenated message string after if statements testing.
     message += `</p>`
 
-  /* Code snippet provided by Treehouse. This syntax selects the 'quote-box' 
-   div and updates its HTML content with the random quote markup. */
+  /* Code snippet provided by Treehouse. This syntax selects the 'quote-box' div and updates its HTML content
+   with the random quote markup. */
   return document.getElementById('quote-box').innerHTML = message;
 
 }
 
-/***
- *  'randomRGB function
- ***/
+// -------------------------------randomRGB function---------------------------------------------------
 
 /*** 
-  [randomRGB is a function that will return a random color using the RGB model. This function
-   will be used to apply different colors to the background of the html body tags]
+  randomRGB is a function that will return a random color using the RGB model.
 
-  @param {[]} - [No parameter in this function]
-  @returns {[string]} randomRGBColor - [string with the random color definiton for the red,
-  blue & green hues]
+  @param {[]} - No parameter in this function.
+  @returns {[string]} randomRGBColor - string with the random rgb color definiton.
 ***/
 
 function randomRGB() {
@@ -149,32 +131,27 @@ function randomRGB() {
   let green = Math.floor( Math.random() * 256);
   let blue = Math.floor ( Math.random() * 256);
   const randomRGBColor = `rgb( ${red}, ${green}, ${blue})`;
+
   return randomRGBColor;
 }
 
-/***
- * EXTRA CREDIT: STEP 2 - CREATING RANDOM BACKGROUND COLORS
- * NOTE: This portion of the code was done referencing "Introduction to Events" by MDN Web Docs
- * URL: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
- ***/
+// ------------------------------Extra Credit Steps 2 & 3----------------------------------------------
 
- // Creating a constant button variable named button that will store refence to the button HTML element
+/* Referencing "Introduction to Events" by MDN Web Docs.
+   URL: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events */
+
+ // Creating a constant variable named button that will store reference to the button HTML element.
 const button = document.querySelector('button');
 
-/* Setting button.onclick to an anonymous function that changes the background color of body to a random  
-color done by the randomRGB function everytime the user presses the "Show Another Quote" button.*/
+// Setting button.onclick to an anonymous function that changes the background color of the HTML body element.
 button.onclick = function(){
   document.querySelector('Body').style.backgroundColor = `${randomRGB()}`;
 }
 
-/***
- * EXTRA CREDIT: STEP 3 - Auto Refreshes Quotes
- * NOTE: This portion of the code was done referencing "Window setInterval() Method" by w3schools.com
- * URL: https://www.w3schools.com/jsref/met_win_setinterval.asp
- ***/
+/* Referencing "Window setInterval() Method" by w3schools.com 
+   URL: https://www.w3schools.com/jsref/met_win_setinterval.asp */
 
- /* the setInterval method was given an anonymous function that will run the printQuote() function and change the 
- background color of the body element at an interval of 10000 milliseconds or 10 seconds */
+ // Setting the setInterval to change the random quote and background color every 10 seconds.
 setInterval(function() { printQuote(); document.querySelector('Body').style.backgroundColor = `${randomRGB() }`;},10000);
 
 /***
