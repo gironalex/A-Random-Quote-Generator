@@ -110,8 +110,7 @@ function printQuote(){
   // Completed concatenated message string after if statements testing.
     message += `</p>`
 
-  /* Code snippet provided by Treehouse. This syntax selects the 'quote-box' div and updates its HTML content
-   with the random quote markup. */
+  // selects the 'quote-box' div and updates its HTML content with the random quote markup. 
   return document.getElementById('quote-box').innerHTML = message;
 
 }
@@ -154,9 +153,5 @@ button.onclick = function(){
  // Setting the setInterval to change the random quote and background color every 10 seconds.
 setInterval(function() { printQuote(); document.querySelector('Body').style.backgroundColor = `${randomRGB() }`;},10000);
 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
-
+// click event listener for the print quote button
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
